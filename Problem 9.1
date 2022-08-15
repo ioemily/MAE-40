@@ -1,1 +1,39 @@
+clear all; close all; clc; format long;
+name = 'Emily Inthavong';
+id = 'A15994485';
+course = 'MAE40';
+hw_num = '1';
+problem = '9.1';
+
+%% Analyzing the n'th order Pade appoximation for delay function F(s)=e^(-ds)
+
+d = 0.1;
+
+% 1st Order Pade Approximation
+[num1,den1] = pade(d,1);
+[z1,p1,k1]=tf2zp(num1,den1);
+figure(1);
+pzmap(p1,z1);
+title('Poles and Zeros of 1st Order Pade Approximation');
+
+% 2nd Order Pade Approximation
+[num2,den2] = pade(d,2);
+[z2,p2,k2]=tf2zp(num2,den2);
+figure(2);
+pzmap(p2,z2);
+title('Poles and Zeros of 2nd Order Pade Approximation');
+
+% 4th Order Pade Approximation
+[num4,den4] = pade(d,4);
+[z4,p4,k4]=tf2zp(num4,den4);
+figure(3);
+pzmap(p4,z4);
+title('Poles and Zeros of 4th Order Pade Approximation');
+
+% 8th Order Pade Approximation
+[num8,den8] = pade(d,8);
+[z8,p8,k8]=tf2zp(num8,den8);
+figure(4);
+pzmap(p8,z8);
+title('Poles and Zeros of 8th Order Pade Approximation');
 
