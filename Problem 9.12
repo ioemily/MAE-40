@@ -17,28 +17,28 @@ afunction='strictly proper';
 b=figure(2);
 G2=tf([1 -1],[1]);
 bode(G2);
-afunction='improper';
+bfunction='improper';
 
 %C: All-pass filter G3(s)=(s-1)/(s+1)
 c=figure(3);
 G3=tf([1 -1],[1 1]);
 bode(G3);
-afunction='semi-proper';
+cfunction='semi-proper';
 
 %D: PID filter G4(s)=(s^2+101s+100)/s
 d=figure(4);
 G4=tf([1 101 100],[1 0]);
 bode(G4);
-afunction='improper';
+dfunction='improper';
 
 %E: Bandpass filter G5(s)=s/(s^2+101s+100)
 e=figure(5);
 G5=tf([1 0],[1 101 100]);
 bode(G5);
-afunction='strictly proper';
+efunction='strictly proper';
 
 %F: (Second-order) Low-pass filter G6(s)=1/(s^2+s+1)
 f=figure(6);
 G6=tf([1],[1 1 1]);
 bode(G6);
-afunction='strictly proper';
+ffunction='strictly proper';
