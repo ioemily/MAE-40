@@ -1,1 +1,18 @@
+clear all; close all; clc; format long;
+name = 'Emily Inthavong';
+id = 'A15994485';
+course = 'MAE40';
+hw_num = '1';
+problem = '10.5a';
 
+% Analyzing a passive circuit 
+RC=0.5; LC=1;
+syms s V0 Vi;
+
+symsx = (1/LC)/(s^2+(RC/LC)*s+1/LC)
+
+% Bode plot
+bode(tf([1],[1 0.5 1]));
+
+% Cutoff frequency
+fc = 1/(2*pi*sqrt(LC));
