@@ -1,1 +1,17 @@
+clear all; close all; clc; format long;
+name = 'Emily Inthavong';
+id = 'A15994485';
+course = 'MAE40';
+hw_num = '1';
+problem = '10.1';
 
+%% Analyzing how a Wheatstone bridge may be used to measure the inductance
+%% of an unknown inductor L5 with known inductor L2 
+
+syms L2 L5 s V0; R1=1e3; R4=1e3; R3=1e5;
+A=[1 -1 -1 0 0 0 0 0; 0 1 0 -1 -1 0 0 0; 
+   0 0 1 1 0 -1 0 0; 0 R1 0 0 0 0 1 0;
+   0 0 1*s*L2 0 0 0 0 1; 0 0 0 R3 0 0 -1 1; 
+   0 0 0 0 R4 0 -1 0; 0 0 0 0 0 1*s*L5 0 -1];
+b=[0; 0; 0; V0; V0; 0; 0; 0]; 
+x=A\b
