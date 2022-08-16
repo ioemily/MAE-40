@@ -1,1 +1,21 @@
+clear all; close all; clc; format long;
+name = 'Emily Inthavong';
+id = 'A15994485';
+course = 'MAE40';
+hw_num = '1';
+problem = '10.2';
 
+%% Using WYE Delta method to create equivalent circuits with capacitors
+
+syms C1 C2 C3 C4 C5 Ca Cb Cc
+eqn1= Ca+Cb==(C1*(C2+C3))/(C1+C2+C3)
+eqn2= Ca+Cc==(C2*(C1+C3))/(C1+C2+C3)
+eqn3= Cb+Cc==(C3*(C1+C2))/(C1+C2+C3)
+A=solve(eqn1,eqn2,eqn3,Ca,Cb,Cc);
+B=solve(eqn1,eqn2,eqn3,C1,C2,C3);
+Ca=simplify(A.Ca),Cb=simplify(A.Cb),Cc=simplify(A.Cc)
+C1=simplify(B.C1),C2=simplify(B.C2),C3=simplify(B.C3)
+
+% Replacing the resistors in Figure 10.3d with capacitors and then 
+% finding equivalent capacitance
+Ceq=simplify(1/(1/Ca+1/(1/(1/Cb+1/C4)+1/(1/Cc+1/C5))))
