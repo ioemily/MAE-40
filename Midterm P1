@@ -1,0 +1,18 @@
+clear all; close all; clc; format long;
+name = 'Emily Inthavong';
+id = 'A15994485';
+course = 'MAE40';
+assignment = 'midterm';
+
+
+%% Problem 1
+% Analyzing a "Bridged-T" filter circuit
+% {V1, V2, I0, Ia, Ib, Ic, Id}
+
+syms Cb Cc s V0 Ra Rd; 
+A=[0 0 1 -1 0 -1 0; 0 0 0 0 1 -1 -1;
+    0 Cb*s 0 0 1 0 0; -Cc*s Cc*s 0 0 1 0;
+    1 0 0 Ra 0 0 0; -Cc*s Cb*s+(1/Rd)+Cc*s 0 0 0 0;
+    Cc*s+(1/Ra) -Cc*s 0 0 0 0;
+b=[0; 0; 0; Cb*s*V0; 0; Cb*s*V0; V0*(1/Ra)];
+x=A\b
